@@ -27,7 +27,7 @@ android {
 
     defaultConfig {
         minSdkVersion 24
-        applicationId "com.flys.dico"
+        applicationId "com.kyossi.dg"
         targetSdkVersion 33
         versionCode 78
         versionName "1.1.4.0"
@@ -84,7 +84,7 @@ android {
     dependenciesInfo {
         includeInBundle true
     }
-    namespace 'com.flys.dico'
+    namespace 'com.kyossi.dg'
     //Java compilation options
 
 

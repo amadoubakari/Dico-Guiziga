@@ -3,6 +3,6 @@
   "databaseVersion": 5,
   "entities": [
     "com.flys.notification.domain.Notification",
-    "com.flys.dico.dao.entities.User"
+    "com.kyossi.dg.dao.entities.User"
   ]
 }
