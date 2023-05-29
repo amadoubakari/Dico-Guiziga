@@ -2,7 +2,7 @@
 # generated on 2021/09/25 06:55:07
 #
 # --table-start--
-dataClass=com.flys.dico.dao.entities.User
+dataClass=com.kyossi.dg.dao.entities.User
 tableName=user
 # --table-fields-start--
 # --field-start--

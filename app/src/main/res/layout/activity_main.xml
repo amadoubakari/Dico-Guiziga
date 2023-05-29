@@ -29,7 +29,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <!-- conteneur de fragments -->
-        <com.flys.dico.architecture.core.MyPager
+        <com.kyossi.dg.architecture.core.MyPager
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
