@@ -18,10 +18,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.kyossi.dg.R;
 import com.kyossi.dg.architecture.custom.IMainActivity;
+import com.kyossi.dg.dao.Definition;
+import com.kyossi.dg.dao.entities.Synonyme;
 import com.kyossi.dg.dao.entities.WordToShare;
 import com.kyossi.dg.utils.Utils;
 import com.google.android.material.card.MaterialCardView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -55,7 +58,7 @@ public class WordAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.searchText = searchText;
         this.onclickListener = onclickListener;
         this.onSearchActionListener = searchActionListener;
-        this.locale=locale;
+        this.locale = locale;
     }
 
     public WordAdapter(Context context, List<Word> words, int itemPerDisplay, String locale, WordOnclickListener onclickListener, OnSearchActionListener searchActionListener) {
@@ -64,7 +67,7 @@ public class WordAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         this.context = context;
         this.onclickListener = onclickListener;
         this.onSearchActionListener = searchActionListener;
-        this.locale=locale;
+        this.locale = locale;
     }
 
     @NonNull
@@ -86,6 +89,33 @@ public class WordAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         Word word = words.get(position);
         if (holder instanceof Holder) {
             Holder view = (Holder) holder;
+
+            RecyclerView definitionsRecyclerView = view.definitions;
+            RecyclerView synonymesRecyclerView = view.synonymes;
+
+            definitionsRecyclerView.setHasFixedSize(true);
+            synonymesRecyclerView.setHasFixedSize(true);
+
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(context);
+            LinearLayoutManager linearLayoutManager1 = new LinearLayoutManager(context);
+            definitionsRecyclerView.setLayoutManager(linearLayoutManager);
+            synonymesRecyclerView.setLayoutManager(linearLayoutManager1);
+
+            List<Definition> definitions = new ArrayList<>();
+            definitions.add(new Definition(1, "Definition 1", "Example 1"));
+            definitions.add(new Definition(2, "Definition 1", "Example 2"));
+            definitions.add(new Definition(3, "Definition 1", "Example 3"));
+            DefinitionsAdapter definitionsAdapter = new DefinitionsAdapter(context, definitions);
+
+            List<Synonyme> synonymes = new ArrayList<>();
+            synonymes.add(new Synonyme("Premier synonyme"));
+            synonymes.add(new Synonyme("Deuxieme synonyme"));
+            synonymes.add(new Synonyme("Troisieme synonyme"));
+
+            definitionsRecyclerView.setAdapter(definitionsAdapter);
+            SynonymesAdapter synonymesAdapter = new SynonymesAdapter(context, synonymes);
+            synonymesRecyclerView.setAdapter(synonymesAdapter);
+
             higherLightSearchedWord(word, view)
                     .subscribe();
         } else {
@@ -116,6 +146,10 @@ public class WordAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TextView title;
         TextView description;
         MaterialCardView word;
+
+        RecyclerView definitions;
+
+        RecyclerView synonymes;
         //Simple view to attach popup menu
         View attachOfPopMenu;
         WordOnclickListener wordOnclickListener;
@@ -126,6 +160,8 @@ public class WordAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             description = itemView.findViewById(R.id.description);
             word = itemView.findViewById(R.id.word_card_id);
             attachOfPopMenu = itemView.findViewById(R.id.view_to_attach_popup_menu_id);
+            definitions = itemView.findViewById(R.id.rcv_definitions);
+            synonymes = itemView.findViewById(R.id.rcv_synonymes);
             wordOnclickListener = onclickListener;
             word.setOnLongClickListener(this);
             word.setOnClickListener(this);
@@ -271,7 +307,7 @@ public class WordAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 }
             }
 
-           Utils.loadHighLightedWords(context, this.locale).distinct().subscribe(highLightedWords -> {
+            Utils.loadHighLightedWords(context, this.locale).distinct().subscribe(highLightedWords -> {
                 highLightedWords.stream().forEach(s -> Linkify.addLinks(spannable, Pattern.compile(s), ""));
             });
             Utils.stripUnderlines(spannable, onSearchActionListener);
