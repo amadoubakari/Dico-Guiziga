@@ -7,7 +7,7 @@
     <string name="fui_progress_dialog_signing_up">Création de votre brillant compte...</string>
     <string name="navigation_menu_settings">Configurations</string>
     <string name="navigation_menu_logout">Se déconnecter</string>
-    <string name="dictionnaire_informatique">Dictionnaire Informatique</string>
+    <string name="dictionnaire_informatique">Dictionnaire Guiziga</string>
     <string name="source_repository_git_url" translatable="false">https://github.com/amadoubakari/Ky-Dico.git</string>
     <string name="kyossi_website_url" translatable="false">https://kyossi.com</string>
     <string name="menu_recommander_msg">Recommander</string>

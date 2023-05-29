@@ -4,7 +4,7 @@
     <string name="fui_progress_dialog_signing_up">Création de votre compte ...</string>
     <string name="navigation_menu_settings">Configurations</string>
     <string name="navigation_menu_logout">Se déconnecter</string>
-    <string name="dictionnaire_informatique">Dictionnaire Informatique</string>
+    <string name="dictionnaire_informatique">Dictionnaire Guiziga</string>
     <string name="menu_recommander_msg">Recommander</string>
     <string name="menu_home_msg">Accueil</string>
     <string name="menu_me_msg">Moi</string>
@@ -44,8 +44,8 @@
     <string name="activity_main_username">Utilisateur</string>
     <string name="activity_main_email_address">Adresse Email</string>
     <string name="activity_main_thanks_msg">"Merci "</string>
-    <string name="app_name_release">Dictionnaire Informatique</string>
-    <string name="app_name_debug">Dictionnaire Informatique</string>
+    <string name="app_name_release">KyOssi</string>
+    <string name="app_name_debug">KyOssi</string>
     <string name="app_name_rct">rct</string>
     <string name="dialog_contact_welcome_msg">Bienvenue</string>
     <string name="app_google_play_store_url">https://play.google.com/store/apps/details?id=com.kyossi.dg&amp;hl=fr</string>
