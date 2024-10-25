@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.kyossi.dg">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" tools:ignore="ScopedStorage"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="29" tools:ignore="ScopedStorage"/>
 
     <application
         android:name="com.kyossi.dg.architecture.custom.DApplicationContext"
@@ -14,13 +14,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         >
+        <property android:name="android.adservices.AD_SERVICES_CONFIG"
+            android:resource="@xml/gma_ad_services_config"
+            tools:replace="android:resource"/>
         <activity
-            android:name=".activity.MainActivity_"
-            android:label="@string/app_name"
+            android:name="com.kyossi.dg.activity.MainActivity_"
             android:windowSoftInputMode="adjustPan"
             android:launchMode="singleTop"
             android:configChanges="layoutDirection|locale|uiMode"
-            android:screenOrientation="portrait"
             android:exported="true"
             android:theme="@style/AppTheme"
             >
@@ -34,7 +35,7 @@
             </intent-filter>
         </activity>
         <service
-            android:name=".service.FCMService_"
+            android:name="com.kyossi.dg.service.FCMService_"
             android:exported="false"
             android:directBootAware="true">
             <intent-filter>
